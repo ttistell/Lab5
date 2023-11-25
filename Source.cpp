@@ -2,6 +2,12 @@
 #include <cmath>
 using namespace std;
 
+void checkValidInput() {
+    if (cin.fail()) {
+        throw "Incorrect input";
+    }
+}
+
 void checkValidParams(double a, double b, double h, double n) {
     if (h <= 0 || a > b || n < 2) {
         throw "Input correct data";
@@ -46,6 +52,15 @@ int main() {
             double y = calculate(x, n);
             cout << "x = " << x << "; " << "y = " << y << "; " << endl;
         }
+    }
+
+    catch (const char* ex) {
+    cout << ex << endl;
+    return -1;
+    }
+    catch (...) {
+        cout << "Unknown error" << endl;
+        return -2;
     }
 
     return 0;
